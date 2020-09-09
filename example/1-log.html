@@ -1,0 +1,34 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Que Demo 1: Log</title>
+</head>
+<body>
+
+<!-- SCRIPTS -->
+<script src=".././dist/que.min.js"></script>
+
+<script>
+
+    /** ----------------------------------------
+         Needle
+     ---------------------------------------- */
+
+    const query = new Que({
+        duplicate: false,
+        mask: false,
+        parse: true
+    });
+
+    query.set({
+        name: 'Sander',
+        age: 31,
+        hobbies: ['music', 'development']
+    });
+
+    query.log();
+
+</script>
+</body>
+</html>
