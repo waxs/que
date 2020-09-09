@@ -1,0 +1,46 @@
+{
+  "name": "Que",
+  "version": "0.1.0",
+  "description": "Que JS is a simple query string parser that dissects your URI and can set new data.",
+  "main": "src/que.js",
+  "scripts": {
+    "start": "webpack --env=dev --config webpack.config.js --progress --profile --colors --watch",
+    "build": "webpack --env=prod --config webpack.config.js --progress --profile --bail",
+    "package": "webpack --env=package --config webpack.config.js --progress --profile --bail",
+    "prod": "npm run build & npm run package",
+    "test": "jest"
+  },
+  "author": "Sander Hidding",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/waxs/que"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.7.5",
+    "@babel/preset-env": "^7.7.6",
+    "babel-eslint": "^10.0.3",
+    "babel-loader": "^8.0.6",
+    "eslint": "^6.8.0",
+    "eslint-loader": "^3.0.3",
+    "jest": "^24.9.0",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.10",
+    "webpack-dev-server": "^3.9.0",
+    "webpack-merge": "^4.2.2"
+  },
+  "jest": {
+    "modulePaths": [
+      "<rootDir>"
+    ],
+    "testMatch": [
+      "**/test/**/*.test.js"
+    ],
+    "moduleNameMapper": {
+      "^@build(.*)$": "<rootDir>/dist$1",
+      "^@js(.*)$": "<rootDir>/src$1",
+      "^@mock(.*)$": "<rootDir>/mockup$1",
+      "^@util(.*)$": "<rootDir>/src/util$1"
+    }
+  }
+}
