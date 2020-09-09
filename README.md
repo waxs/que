@@ -1,4 +1,4 @@
-# Que? JS
+# Que JS
 ![test](https://github.com/waxs/que/workflows/test/badge.svg?branch=master)
 
 Que pasa? Que JS is a small helper to create and read URI queries with Javascript. Que JS will handle 
@@ -15,12 +15,12 @@ query.set({
     hobbies: ['music']
 });
 ```
+Your URL will now look something like this `?name="Sander"&age="31"&hobbies="music,development"`.
 
-## Initiate Needle JS
+## Initiate Que JS
 To use Que we initiate the class as follows, the class will have a default setup but can also be regulated 
 with some configurable props. For instance preventing duplicate values within an array, masking the query using 
 base-64 or disabling parsing. 
-
 ```javascript
 const query = new Que({
     duplicate: false,
@@ -28,11 +28,10 @@ const query = new Que({
     parse: true
 });
 ```
-
 Once Que is initiated you have some methods at your disposal to set, update or remove query data. Reading the data 
 can be easily logged to your console using the `log()` method. A getter `query.data` will retrieve the information 
 from the query. This data variable will be automatically updated once something changes. Just make sure to reevaluate
- once the data has been changed. 
+once the data has been changed. 
  
 ## Getting started
 Que has been build taking intuitive use in account. There are multiple helpers to help you sort, retrieve or 
@@ -45,6 +44,10 @@ manipulate an array of contents. Let's dive a little deeper into the options you
 * `refresh()` remove and recreate the query
 * `value()` retrieve a specific value based on key
   
+This query will result in the following query added to your URL: `?name="Sander"&age="31"&hobbies="music,
+development"`. If (a valid) query was already initiated in the URL, the `set` method will extend upon the current 
+query. Using the `refresh()` method will reinstate the query and remove the present information by updating it with 
+the newly added information.   
 ```javascript
 query.set({
     name: 'Sander',
@@ -52,35 +55,30 @@ query.set({
     hobbies: ['music', 'development']
 });
 ```
-This query will result in the following query added to your URL: `?name="Sander"&age="31"&hobbies="music,
-development"`. If (a valid) query was already initiated in the URL, the `set` method will extend upon the current 
-query. Using the `refresh()` method will reinstate the query and remove the present information by updating it with 
-the newly added information. 
+Meaning if the previously showed `set()` query was already present on the page the `refresh()` method will replace 
+name with Peter, replace the age and remove hobbies from the query. Retrieving a specific value can be easily 
+achieved using the `value()` method. Pass the key of the value you want to retrieve for instance `value('name')` to 
+retrieve the value Peter.
 ```javascript
 query.refresh({
     name: 'Peter',
     age: 42
 });
 ```
-Meaning if the previously showed `set()` query was already present on the page the `refresh()` method will replace 
-name with Peter, replace the age and remove hobbies from the query. Retrieving a specific value can be easily 
-achieved using the `value()` method. Pass the key of the value you want to retrieve for instance `value('name')` to 
-retrieve the value Peter.
+Need to add a new value to an excising query, use the `add()` method, it will add the new value to an excising array.
+ Meaning if we already had Peter with an age of 42 present in the query, it will now look like this 
+ `?name="Peter"&age="42"&city="Deventer"`. The `add()` method will also work on arrays. 
 ```javascript
 query.add({
     city: 'Amsterdam'
 });
 ```
-Need to add a new value to an excising query, use the `add()` method, it will add the new value to an excising array.
- Meaning if we already had Peter with an age of 42 present in the query, it will now look like this 
- `?name="Peter"&age="42"&city="Deventer"`. The `add()` method will also work on arrays. 
-    
 ## Development
 When to use Que JS? If you need to store a filter setup that should be sharable over the web, initiating the query 
 makes sure that data can be easily retrieved once the visitor returns to the page. If you need to save some simple 
 configuration that was set on the page. The are numerous situations where Que JS can be helpful. 
     
-## Examples
+### Examples
 This repository holds multiple examples of using Que JS with a simple `index.html` that will visualise the results in
  the console. Starting with Que JS can be easily done using these examples to get a better understanding of 
  implementing it within your own project. 
