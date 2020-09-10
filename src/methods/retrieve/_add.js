@@ -14,10 +14,11 @@ function add(obj) {
     data.forEach(item => {
         const [name, value] = item;
         const isArray = Array.isArray(value);
-        const array = isArray ? value : value.split();
+        const array = isArray ? value : value.toString().split();
+        const type = typeof this.data[name];
 
         array.forEach(value => {
-            duplicate(name, value) && this._data[name].push(value);
+            duplicate(name, value) && type === 'array' ? this._data[name].push(value) : this._data[name] = value;
         });
     });
 
