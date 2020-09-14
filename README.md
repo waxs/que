@@ -45,6 +45,7 @@ manipulate an array of contents. Let's dive a little deeper into the options you
 * `get()` retrieve the data object
 * `value()` retrieve a specific value based on key
   
+**Examples** 
 * **set(obj)** { object } - new values to be set
 If (a valid) query was already initiated in the URL, the `set` method will extend upon the current 
 query. The `set()` method will also replace any key that was already set, meaning it wont extend upon the given query. 
@@ -72,10 +73,12 @@ This would result in the following URL `?name="Peter"&age="42"&city="Amsterdam,B
 
 * **remove(string)**
 Remove a specific key from the dataset or multiple keys at once using either a string value or an array of values. 
-You can also remove specific values from an array list. The following call will remove a specific value from a key, 
-in this case an array holding hobbies. 
 ```javascript
-query.set({
+query.remove('hobbies');
+```
+You can also remove specific values from an array list. in this case an array holding hobbies. The following call will remove a specific value from a key, in this case an array holding hobbies. 
+```javascript
+query.remove({
     hobbies: 'music'
 });
 ```
@@ -104,7 +107,7 @@ When to use Que JS? If you need to store a filter setup that should be sharable 
 makes sure that data can be easily retrieved once the visitor returns to the page. If you need to save some simple 
 configuration that was set on the page. The are numerous situations where Que JS can be helpful. 
     
-### Examples
+### Mocks
 This repository holds multiple examples of using Que JS with a simple `index.html` that will visualise the results in
  the console. Starting with Que JS can be easily done using these examples to get a better understanding of 
  implementing it within your own project. 
