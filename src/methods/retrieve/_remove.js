@@ -27,8 +27,13 @@ function remove(obj) {
         data.forEach(item => {
             const [name, value] = item;
 
+            if((isType(this.data[name]) === 'string' || isType(this.data[name]) === 'boolean') && this.data[name] === value) {
+                this._data[name] && delete this._data[name];
+                return;
+            }
+
             const isArray = Array.isArray(value);
-            const array = isArray ? value : value.split();
+            const array = isArray ? value : this.data[name] && value.split();
 
             this.data[name] && array.forEach(value => {
                 const index = this.data[name].indexOf(value);
