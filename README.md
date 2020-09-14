@@ -33,20 +33,22 @@ can be easily logged to your console using the `log()` method. A getter `query.d
 from the query. This data variable will be automatically updated once something changes. Just make sure to reevaluate
 once the data has been changed. 
 
+🚧 Package is currently in beta.
+
 #### Settings
-| type      	| default 	| example                                                                                    	|
+| type      	| default 	| description                                                                                |
 |-----------	|---------	|--------------------------------------------------------------------------------------------	|
 | duplicate 	| `false` 	| Will make sure that once new values are set duplicates are ignored                         	|
-| mask      	| `false` 	| Will set the query using base-64 encoding and thereby masking it for the common man.       	|
+| mask      	| `false` 	| Will set the query using base-64 encoding and masking it for the common man.       	|
 | parse     	| `true`  	| Will parse the data to matching data types, if `false` all values will be of type `string` 	|
  
 ## Getting started
-Que has been build taking intuitive use in account. There are multiple helpers to help you sort, retrieve or 
-manipulate an array of contents. Let's dive a little deeper into the options you can use with Needle. 
+Que is as simple, pick a method to manipulate that query to your heart's content. Some examples can be found below 
+showing off the usage of Que. 
  
 **Handle Data** 
-* `set()` set a new query to your URI
-* `add()` add a query to your URI
+* `set()` set a new query to your URL
+* `add()` add a key value pair to the  query of your URL
 * `remove()` remove a specific value
 * `refresh()` remove and recreate the query
 * `get()` retrieve the data object
@@ -67,19 +69,23 @@ This query will result in the following query added to your URL: `?name="Sander"
 development"`. Let's say that `?name="Sander"&age="25"` was already present in the URL before the `set()` method was 
 called. This would replace the age and add hobbies as a key. 
 
+👀 Using set will extend upon any excising queries in your URL.
+
 #### add(obj)
 Need to add a new value to an excising query, use the `add()` method, it will add the new value to an excising array,
  or replace the current value with an array and push the new value. Meaning if we already had Peter with an age of 42
-  present in the query, it will now look like this `?name="Peter"&age="42"&city="Amsterdam"`. 
+  present in the query, it will now look like this `?name="Peter"&city="Amsterdam"`. 
 ```javascript
 query.add({
-    city: 'Berlin'
+    city: 'Amsterdam'
 });
 ```
-This would result in the following URL `?name="Peter"&age="42"&city="Amsterdam,Berlin"`.
+The example above would result in the following URL `?name="Peter"&city="Amsterdam,Berlin"`.
 
-#### remove(string || array || obj)
-Remove a specific key from the dataset or multiple keys at once using either a string value or an array of values. 
+👀 Add wil extend upon a available key or create the key if it's not present yet. 
+
+#### remove(string | array | obj)
+Remove a specific key from the query using the name of the key. If a key holds an array all values will be removed.
 ```javascript
 query.remove('hobbies');
 ```
@@ -98,7 +104,7 @@ query.remove({
  key. Meaning if you want to remove a string value, it should match the exact value.
 
 Based on the following query `name="Sander"&city="Deventer"&hobbies="music,development"` we could manipulate the 
-content of the data set. 
+content of the data set like so:
 
 | type   	| usage                                               	| description                              	| output                                         	|
 |--------	|-----------------------------------------------------	|------------------------------------------	|------------------------------------------------	|
@@ -108,7 +114,8 @@ content of the data set.
 
 #### refresh(obj)
 Using the `refresh()` method will reinstate the query and remove the present information by updating it with 
-the newly added information. All the information in the URL will be replaced. 
+the newly added information. All the information in the URL will be replaced. This is especially handy if you want to
+ initiate the query with a preset default configuration or need a simple way of rebuilding the query. 
 ```javascript
 query.refresh({
     name: 'Sander',
@@ -126,16 +133,16 @@ query.value('name');
 👀 Bonus: You can create a similar effect using a getter `this.data.name`.
 
 ## Development
-When to use Que JS? If you need to store a filter setup that should be sharable over the web, initiating the query 
-makes sure that data can be easily retrieved once the visitor returns to the page. If you need to save some simple 
-configuration that was set on the page. The are numerous situations where Que JS can be helpful. 
+When to use Que JS? For instance if you need to store a filter setup that should be sharable over the web, initiating 
+the query makes sure that data can be easily retrieved once the visitor returns to the page. If you need to restore some
+ information from a shared URL. The are numerous situations where Que JS can be helpful. Let's get creative.
     
 ### Mocks
 This repository holds multiple examples of using Que JS with a simple `index.html` that will visualise the results in
  the console. Starting with Que JS can be easily done using these examples to get a better understanding of 
  implementing it within your own project. 
 
-### Testing
+### 🚧 Testing
 Que methods can be tested using Jest, running the `npm run test` command will execute a number of test to make 
 sure basic functionality is working as expected. Test scripts can be found in the `test` folder.  
 
