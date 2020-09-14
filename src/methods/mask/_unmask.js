@@ -1,9 +1,16 @@
 /** ----------------------------------------
+    Valid Mask
+ ---------------------------------------- */
+
+import _validMask from './_validMask';
+
+/** ----------------------------------------
     Unmask
  ---------------------------------------- */
 
 function _unmask(string) {
-    return this.config.mask ? window.atob(string) : string;
+    const parser = _validMask(string) ? window.atob(string) : string;
+    return this.config.mask || _validMask(string) ? parser : string;
 }
 
 /** ----------------------------------------

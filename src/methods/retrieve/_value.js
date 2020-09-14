@@ -2,8 +2,8 @@
     Value
  ---------------------------------------- */
 
-function value(obj) {
-    return this.data[name];
+function value(key) {
+    return this.data[key];
 }
 
 /** ----------------------------------------
