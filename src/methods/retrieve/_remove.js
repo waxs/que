@@ -16,20 +16,24 @@ function remove(obj) {
         this._data[obj] && delete this._data[obj];
     }
 
+    if(argType === 'array') {
+        data.forEach(item => {
+            const [name, value] = item;
+            this._data[value] && delete this._data[value];
+        });
+    }
+
     if(argType === 'object') {
         data.forEach(item => {
             const [name, value] = item;
+
             const isArray = Array.isArray(value);
             const array = isArray ? value : value.split();
 
-            console.log(array);
-
-            this.data[name] && isArray && array.forEach(value => {
+            this.data[name] && array.forEach(value => {
                 const index = this.data[name].indexOf(value);
                 index > -1 && this.data[name].splice(index, 1);
             });
-
-            !isArray && delete this.data[name];
         });
     }
 
