@@ -76,21 +76,27 @@ Remove a specific key from the dataset or multiple keys at once using either a s
 ```javascript
 query.remove('hobbies');
 ```
-You can also remove specific values from an array list. in this case an array holding hobbies. The following call will remove a specific value from a key, in this case an array holding hobbies. 
+You can also remove specific values from an array list. in this case an array holding hobbies. The following call 
+will remove a specific value from a key, in this case an array holding hobbies. If you use and object as an argument 
+the value should always match the value inside the data set (query) for a given key. Meaning if you want to remove a 
+string value, it should match the exact value.
 ```javascript
 query.remove({
     hobbies: 'music'
 });
 ```
-...or remove multiple queries at once using an array of keys.
+...or remove multiple keys at once using an array. This will completely remove hobbies and name from the query.
 ```javascript
 query.remove(['hobbies', 'name']);
 ```
-| type   | usage                              | description                              |
-|--------|------------------------------------|------------------------------------------|
-| string | query.remove('name')               | remove key `name` from query             |
-| array  | query.remove(['name', 'city'])     | remove keys `name` and `city` from query |
-| object | query.remove({ hobbies: 'music' }) | remove value `music` from `hobbies` key  |
+Based on the following query `?name="Sander"&city="Deventer"&hobbies="music,development"` we could manipulate the 
+content of the data set. 
+
+| type   	| usage                              	| description                              	| output                                         	|
+|--------	|------------------------------------	|------------------------------------------	|------------------------------------------------	|
+| string 	| query.remove('name')               	| remove key `name` from query             	| `?city="Deventer"&hobbies="music,development"` 	|
+| array  	| query.remove(['name', 'city'])     	| remove keys `name` and `city` from query 	| `?hobbies="music,development"`                 	|
+| object 	| query.remove({ hobbies: 'music' }) 	| remove value `music` from `hobbies` key  	| `?city="Deventer"&hobbies="music,development"` 	|
 
 ####refresh()
 Using the `refresh()` method will reinstate the query and remove the present information by updating it with 
