@@ -2,9 +2,9 @@
 ![test](https://github.com/waxs/que/workflows/test/badge.svg?branch=master)
 
 Que pasa? Que JS is a small helper to create and read URI queries with Javascript. Que JS will handle 
-strings, numbers and arrays and parse them on your command. You can mask your query using the mask option using a 
-base-64 conversion. It's simple and quick to setup and helps gaining control over data to be stored within the URL of
- your web page. So how does it work?
+strings, numbers, booleans and arrays and parse them on your command. You can mask your query using the mask option 
+using a base-64 conversion. It's simple and quick to setup and helps gaining some extra control over query 
+management. That said, how does it work in a nutshell?
 
 ```javascript
 const query = new Que();
@@ -15,12 +15,12 @@ query.set({
     hobbies: ['music, development']
 });
 ```
-Your URL will now look something like this `?name="Sander"&age="31"&hobbies="music,development"`.
+Your URL will now look something like this `?name="Sander"&age="31"&hobbies="music,development"`. Easy does it!
 
 ## Initiate Que JS
 To use Que we initiate the class as follows, the class will have a default setup but can also be regulated 
 with some configurable props. For instance preventing duplicate values within an array, masking the query using 
-base-64 or disabling parsing. 
+base-64 and parsing values. 
 ```javascript
 const query = new Que({
     duplicate: false,
@@ -32,6 +32,13 @@ Once Que is initiated you have some methods at your disposal to set, update or r
 can be easily logged to your console using the `log()` method. A getter `query.data` will retrieve the information 
 from the query. This data variable will be automatically updated once something changes. Just make sure to reevaluate
 once the data has been changed. 
+
+#### Settings
+| type      	| default 	| example                                                                                    	|
+|-----------	|---------	|--------------------------------------------------------------------------------------------	|
+| duplicate 	| `false` 	| Will make sure that once new values are set duplicates are ignored                         	|
+| mask      	| `false` 	| Will set the query using base-64 encoding and thereby masking it for the common man.       	|
+| parse     	| `true`  	| Will parse the data to matching data types, if `false` all values will be of type `string` 	|
  
 ## Getting started
 Que has been build taking intuitive use in account. There are multiple helpers to help you sort, retrieve or 
@@ -45,7 +52,7 @@ manipulate an array of contents. Let's dive a little deeper into the options you
 * `get()` retrieve the data object
 * `value()` retrieve a specific value based on key
   
-##Examples
+## Examples
 #### set(obj)
 If (a valid) query was already initiated in the URL, the `set` method will extend upon the current 
 query. The `set()` method will also replace any key that was already set, meaning it wont extend upon the given query. 
@@ -76,38 +83,39 @@ Remove a specific key from the dataset or multiple keys at once using either a s
 ```javascript
 query.remove('hobbies');
 ```
+...or remove multiple keys at once using an array. This will completely remove hobbies and name from the query.
+```javascript
+query.remove(['hobbies', 'name']);
+```
 You can also remove specific values from an array list. in this case an array holding hobbies. The following call 
-will remove a specific value from a key, in this case an array holding hobbies. If you use and object as an argument 
-the value should always match the value inside the data set (query) for a given key. Meaning if you want to remove a 
-string value, it should match the exact value.
+will remove a specific value from a key, in this case an array holding hobbies. 
 ```javascript
 query.remove({
     hobbies: 'music'
 });
 ```
-...or remove multiple keys at once using an array. This will completely remove hobbies and name from the query.
-```javascript
-query.remove(['hobbies', 'name']);
-```
+👀 If you use and object as an argument the value should always match the value inside the data set (query) for a given
+ key. Meaning if you want to remove a string value, it should match the exact value.
+
 Based on the following query `name="Sander"&city="Deventer"&hobbies="music,development"` we could manipulate the 
 content of the data set. 
 
 | type   	| usage                                               	| description                              	| output                                         	|
 |--------	|-----------------------------------------------------	|------------------------------------------	|------------------------------------------------	|
-| string 	| ```javascript query.remove('name') ```              	| remove key `name` from query             	| `?city="Deventer"&hobbies="music,development"` 	|
-| array  	| ```javascript query.remove(['name', 'city']) ```    	| remove keys `name` and `city` from query 	| `?hobbies="music,development"`                 	|
-| object 	| ```javascript query.remove({ hobbies: 'music' })``` 	| remove value `music` from `hobbies` key  	| `?city="Deventer"&hobbies="music,development"` 	|
+| string 	| query.remove('name')             	| remove key `name` from query             	| `city="Deventer"&hobbies="music,development"` 	|
+| array  	| query.remove(['name', 'city'])   	| remove keys `name` and `city` from query 	| `hobbies="music,development"`                 	|
+| object 	| query.remove({ hobbies: 'music' }	| remove value `music` from `hobbies` key  	| `city="Deventer"&hobbies="music,development"` 	|
 
 #### refresh(obj)
 Using the `refresh()` method will reinstate the query and remove the present information by updating it with 
 the newly added information. All the information in the URL will be replaced. 
 ```javascript
-query.set({
+query.refresh({
     name: 'Sander',
     age: 31
 });
 ```
-This would result in `?name="Sander"&age="25"` everytime the function is called. 
+This would result in `?name="Sander"&age="31"` each time the function is called. 
 
 #### value(string)
 If you need to retrieve a specific value from the data set use the `value()` method. It takes a string that will 
@@ -115,7 +123,7 @@ reflect the key name of the data set. If you need all the data to be returned us
 ```javascript
 query.value('name');
 ```
-You can create a similar effect using a getter `this.data.name`.
+👀 Bonus: You can create a similar effect using a getter `this.data.name`.
 
 ## Development
 When to use Que JS? If you need to store a filter setup that should be sharable over the web, initiating the query 
