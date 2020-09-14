@@ -46,7 +46,7 @@ manipulate an array of contents. Let's dive a little deeper into the options you
 * `value()` retrieve a specific value based on key
   
 ##Examples
-####set()
+#### set(obj)
 If (a valid) query was already initiated in the URL, the `set` method will extend upon the current 
 query. The `set()` method will also replace any key that was already set, meaning it wont extend upon the given query. 
 ```javascript
@@ -60,7 +60,7 @@ This query will result in the following query added to your URL: `?name="Sander"
 development"`. Let's say that `?name="Sander"&age="25"` was already present in the URL before the `set()` method was 
 called. This would replace the age and add hobbies as a key. 
 
-####add()
+#### add(obj)
 Need to add a new value to an excising query, use the `add()` method, it will add the new value to an excising array,
  or replace the current value with an array and push the new value. Meaning if we already had Peter with an age of 42
   present in the query, it will now look like this `?name="Peter"&age="42"&city="Amsterdam"`. 
@@ -71,7 +71,7 @@ query.add({
 ```
 This would result in the following URL `?name="Peter"&age="42"&city="Amsterdam,Berlin"`.
 
-####remove()
+#### remove(string || array || obj)
 Remove a specific key from the dataset or multiple keys at once using either a string value or an array of values. 
 ```javascript
 query.remove('hobbies');
@@ -89,16 +89,16 @@ query.remove({
 ```javascript
 query.remove(['hobbies', 'name']);
 ```
-Based on the following query `?name="Sander"&city="Deventer"&hobbies="music,development"` we could manipulate the 
+Based on the following query `name="Sander"&city="Deventer"&hobbies="music,development"` we could manipulate the 
 content of the data set. 
 
-| type   	| usage                              	| description                              	| output                                         	|
-|--------	|------------------------------------	|------------------------------------------	|------------------------------------------------	|
-| string 	| query.remove('name')               	| remove key `name` from query             	| `?city="Deventer"&hobbies="music,development"` 	|
-| array  	| query.remove(['name', 'city'])     	| remove keys `name` and `city` from query 	| `?hobbies="music,development"`                 	|
-| object 	| query.remove({ hobbies: 'music' }) 	| remove value `music` from `hobbies` key  	| `?city="Deventer"&hobbies="music,development"` 	|
+| type   	| usage                                               	| description                              	| output                                         	|
+|--------	|-----------------------------------------------------	|------------------------------------------	|------------------------------------------------	|
+| string 	| ```javascript query.remove('name') ```              	| remove key `name` from query             	| `?city="Deventer"&hobbies="music,development"` 	|
+| array  	| ```javascript query.remove(['name', 'city']) ```    	| remove keys `name` and `city` from query 	| `?hobbies="music,development"`                 	|
+| object 	| ```javascript query.remove({ hobbies: 'music' })``` 	| remove value `music` from `hobbies` key  	| `?city="Deventer"&hobbies="music,development"` 	|
 
-####refresh()
+#### refresh(obj)
 Using the `refresh()` method will reinstate the query and remove the present information by updating it with 
 the newly added information. All the information in the URL will be replaced. 
 ```javascript
@@ -109,7 +109,7 @@ query.set({
 ```
 This would result in `?name="Sander"&age="25"` everytime the function is called. 
 
-####value()
+#### value(string)
 If you need to retrieve a specific value from the data set use the `value()` method. It takes a string that will 
 reflect the key name of the data set. If you need all the data to be returned use `this.data` or the `get()` method. 
 ```javascript
