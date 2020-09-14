@@ -55,7 +55,8 @@ showing off the usage of Que.
 * `value()` retrieve a specific value based on key
   
 ## Examples
-#### set(obj)
+set(obj)
+---
 If (a valid) query was already initiated in the URL, the `set` method will extend upon the current 
 query. The `set()` method will also replace any key that was already set, meaning it wont extend upon the given query. 
 ```javascript
@@ -71,7 +72,8 @@ called. This would replace the age and add hobbies as a key.
 
 👀 Using set will extend upon any excising queries in your URL.
 
-#### add(obj)
+add(obj)
+---
 Need to add a new value to an excising query, use the `add()` method, it will add the new value to an excising array,
  or replace the current value with an array and push the new value. Meaning if we already had Peter with an age of 42
   present in the query, it will now look like this `?name="Peter"&city="Amsterdam"`. 
@@ -84,7 +86,8 @@ The example above would result in the following URL `?name="Peter"&city="Amsterd
 
 👀 Add wil extend upon a available key or create the key if it's not present yet. 
 
-#### remove(string | array | obj)
+remove(string | array | obj)
+---
 Remove a specific key from the query using the name of the key. If a key holds an array all values will be removed.
 ```javascript
 query.remove('hobbies');
@@ -112,7 +115,8 @@ content of the data set like so:
 | array  	| query.remove(['name', 'city'])   	| remove keys `name` and `city` from query 	| `hobbies="music,development"`                 	|
 | object 	| query.remove({ hobbies: 'music' }	| remove value `music` from `hobbies` key  	| `city="Deventer"&hobbies="music,development"` 	|
 
-#### refresh(obj)
+refresh(obj)
+---
 Using the `refresh()` method will reinstate the query and remove the present information by updating it with 
 the newly added information. All the information in the URL will be replaced. This is especially handy if you want to
  initiate the query with a preset default configuration or need a simple way of rebuilding the query. 
@@ -124,7 +128,8 @@ query.refresh({
 ```
 This would result in `?name="Sander"&age="31"` each time the function is called. 
 
-#### value(string)
+value(string)
+---
 If you need to retrieve a specific value from the data set use the `value()` method. It takes a string that will 
 reflect the key name of the data set. If you need all the data to be returned use `this.data` or the `get()` method. 
 ```javascript
