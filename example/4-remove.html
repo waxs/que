@@ -2,7 +2,7 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Que Demo 1: Log</title>
+    <title>Que Demo 4: Remove</title>
     <link rel="stylesheet" href="./assets/style.css">
 </head>
 <body>
@@ -32,10 +32,13 @@
     });
 
     query.set({
-        active: true,
         name: 'Sander',
         city: 'Deventer',
         hobbies: ['music', 'development']
+    });
+
+    query.remove({
+        hobbies: 'music'
     });
 
     query.log();
