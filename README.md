@@ -53,6 +53,8 @@ showing off the usage of Que.
 * `refresh()` remove and recreate the query
 * `get()` retrieve the data object
 * `value()` retrieve a specific value based on key
+* `parse()` parse an excising URL to an object
+* `stringify()` parse an object to a query
   
 ## Examples
 #### set(obj)
