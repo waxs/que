@@ -2,11 +2,11 @@
     Create URI
  ---------------------------------------- */
 
-function _createUri(uri) {
-    const values = Object.keys(this.data);
+function _createUri(data = this.data) {
+    const values = Object.keys(data);
 
     const query = values.map(key => {
-        const value = this.data[key];
+        const value = data[key];
 
         const [date, isDate] = this._convertDate(value);
         const convertedValue = (isDate && date) || value;

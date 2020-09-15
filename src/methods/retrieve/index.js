@@ -8,6 +8,7 @@ import parse from './_parse';
 import refresh from './_refresh';
 import remove from './_remove';
 import set from './_set';
+import stringify from './_stringify';
 import value from './_value';
 
 /** ----------------------------------------
@@ -21,5 +22,6 @@ export default {
     refresh,
     remove,
     set,
+    stringify,
     value
 };
