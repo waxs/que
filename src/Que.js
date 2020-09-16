@@ -23,9 +23,7 @@ class Que extends Core {
 
     constructor(config) {
         super();
-        this._config = config;
-        this._data = {};
-        this._url = window.location.href;
+        construct(this, config);
         this._init();
     }
 
