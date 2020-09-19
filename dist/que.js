@@ -1,5 +1,5 @@
 /*!
- * @waxs/que (0.2.2) by Sander Hidding
+ * @waxs/que (0.2.4) by Sander Hidding
  * Que JS is a simple query string parser that dissects your URI and can set new data.
  * This source code is licensed under the MIT license found in the GitHub repository (git+https://github.com/waxs/que.git)
  */
