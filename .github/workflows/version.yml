@@ -1,0 +1,22 @@
+name: Update Version
+on:
+  push:
+    branches:
+      - master
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+        with:
+          fetch-depth: '0'
+      - name: Bump versioning
+        uses: anothrNick/github-tag-action@1.26.0
+        env:
+          WITH_V: true
+          TAG_CONTEXT: branch
+          INITIAL_VERSION: 0.2.3
+          DEFAULT_BUMP: none
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Bump package.json
+        uses: maks-stupak/gh-action-bump-version@v7.1.5
