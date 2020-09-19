@@ -15,7 +15,7 @@ jobs:
         env:
           WITH_V: true
           TAG_CONTEXT: branch
-          INITIAL_VERSION: 0.2.3
+          INITIAL_VERSION: 0.2.4
           DEFAULT_BUMP: none
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Bump package.json
