@@ -13,7 +13,7 @@ function remove(value) {
     const argType = isType(value);
 
     if(!value) Object.keys(this.data).forEach(key => {
-        this._data[key] = ''
+        delete this._data[key];
     });
 
     if(argType === 'string') {
