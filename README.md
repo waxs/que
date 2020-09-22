@@ -1,5 +1,5 @@
 # Que JS
-![test](https://github.com/waxs/que/workflows/test/badge.svg?branch=master)
+![Testing](https://github.com/waxs/que/workflows/Testing/badge.svg)
 
 Que pasa? Que JS is a small helper to create and read URI queries with Javascript. Que JS will handle strings, numbers, booleans and arrays and parse them on your command. You can mask your query using the mask option using a base-64 conversion. It's simple and quick to setup and helps gaining some extra control over query management. That said, how does it work in a nutshell?
 
