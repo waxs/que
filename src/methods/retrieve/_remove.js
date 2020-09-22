@@ -8,12 +8,18 @@ import isType from '@util/_isType';
     Remove
  ---------------------------------------- */
 
-function remove(obj) {
-    const data = Object.entries(obj);
-    const argType = isType(obj);
+function remove(value) {
+    const data = Object.entries(value);
+    const argType = isType(value);
+
+    if(!value) {
+        Object.keys(this.data).forEach(key => {
+            this.data[key] = '';
+        });
+    }
 
     if(argType === 'string') {
-        this._data[obj] && delete this._data[obj];
+        this._data[value] && delete this._data[value];
     }
 
     if(argType === 'array') {
