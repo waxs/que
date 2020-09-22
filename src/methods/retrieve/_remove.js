@@ -9,14 +9,12 @@ import isType from '@util/_isType';
  ---------------------------------------- */
 
 function remove(value) {
-    const data = Object.entries(value);
+    const data = value && Object.entries(value);
     const argType = isType(value);
 
-    if(!value) {
-        Object.keys(this.data).forEach(key => {
-            this.data[key] = '';
-        });
-    }
+    if(!value) Object.keys(this.data).forEach(key => {
+        this._data[key] = ''
+    });
 
     if(argType === 'string') {
         this._data[value] && delete this._data[value];
@@ -47,7 +45,6 @@ function remove(value) {
             });
         });
     }
-
 
     const uri = this._createUri();
     this._updateUri(uri);
