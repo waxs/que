@@ -8,6 +8,7 @@ on:
       - master
 jobs:
   test:
+    name: run tests
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
@@ -16,8 +17,22 @@ jobs:
           node-version: 12
       - run: npm install
       - run: npm run test
-  publish:
+  bump:
+    name: bump version
     needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: 'actions/checkout@v2'
+        with:
+          ref: ${{ github.ref }}
+      - uses: 'phips28/gh-action-bump-version@master'
+        with:
+          tag-prefix: 'v'
+        env:
+          GITHUB_TOKEN: ${{ secrets.github_token }}
+  publish:
+    name: publish package
+    needs: bump
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
