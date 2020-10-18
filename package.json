@@ -2,7 +2,7 @@
   "name": "@waxs/que",
   "version": "1.0.1",
   "description": "Que JS is a simple query string parser that dissects your URI and can set new data.",
-  "main": "src/que.js",
+  "main": "dist/que.pkg.js",
   "scripts": {
     "start": "webpack --env=dev --config webpack.config.js --progress --profile --colors --watch",
     "build": "webpack --env=prod --config webpack.config.js --progress --profile --bail",
