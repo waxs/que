@@ -1,7 +1,7 @@
 name: publish
 on:
  workflow_run:
-    workflows: [update version]
+    workflows: [update version, test]
     branches:
       - master
     types:
