@@ -34,7 +34,7 @@ const setDefaults = config => {
 
         {
             name: 'url',
-            value: window.location.href
+            value: document.URL ||window.location.href
         }
 
     ];
