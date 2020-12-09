@@ -9,7 +9,6 @@ import Core from '@js/Core';
  ---------------------------------------- */
 
 import { construct } from '@js/setup/_construct';
-import { contents } from '@js/setup/_contents';
 
 /** ----------------------------------------
      Que
@@ -22,7 +21,7 @@ class Que extends Core {
      ---------------------------------------- */
 
     constructor(config) {
-        super();
+        super(); 
         construct(this, config);
         this._init();
     }

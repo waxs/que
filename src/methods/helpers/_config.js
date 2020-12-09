@@ -13,13 +13,7 @@ const defaultConfig = {
  ---------------------------------------- */
 
 function _setConfig() {
-    this._config = defaultConfig;
-    const config = Object.entries(this.config);
-
-    config.map(setting => {
-        const [name, value] = setting;
-        this._config[name] = value;
-    });
+    this._config = { ...defaultConfig, ...this._config };
 }
 
 /** ----------------------------------------
