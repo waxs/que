@@ -22,8 +22,10 @@ class Que extends Core {
 
     constructor(config) {
         super(); 
-        construct(this, config);
-        this._init();
+        if(typeof window !== 'undefined') {
+            construct(this, config);
+            this._init();
+        } 
     }
 
     /** ----------------------------------------
