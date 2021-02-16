@@ -3,7 +3,8 @@
  ---------------------------------------- */
 
 const defaultConfig = {
-    duplicate: true,
+    duplicate: false,
+    history: false, 
     mask: false,
     parse: true
 };
