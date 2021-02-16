@@ -12,8 +12,10 @@ function add(obj) {
         const type = typeof this.data[name];
 
         array.forEach(value => {
+            if(this._hasDuplicates(name, value)) return;
+
             const add = () => {
-                const excists = this._hasDuplictes(name, value) || this._data[name] !== value;
+                const excists = this._hasDuplicates(name, value) || this._data[name] !== value;
                 excists && (this._data[name] = [this._data[name], value]);
             };
 
