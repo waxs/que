@@ -14,7 +14,7 @@ function _createUri(data = this.data) {
     const convertDates = value => {
         const [date, isDate] = this._convertDate(value);
         const type = (isDate && date) || value;
-        return type.toString();
+        return value && type.toString();
     };
 
     const query = values.map(key => {

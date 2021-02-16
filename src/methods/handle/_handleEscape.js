@@ -3,7 +3,7 @@
  ---------------------------------------- */
 
 function _handleEscape(value) {
-    return decodeURI(value.replace(/[{()}]/g, ''));
+    return decodeURI(value.replace(/[-[\]{}()*+?.\\^$|#\s]/g, '\\$'));
 }
 
 /** ----------------------------------------
