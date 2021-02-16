@@ -31,7 +31,7 @@ describe('Using set() for url manipulation', () => {
         });
 
         const input = decodeURI(global.window.location.href);
-        const output = 'http://localhost/?name="Sander"&age="31"&city="Amsterdam"&language="javascript,typescript"';
+        const output = 'http://localhost/?name="Sander"&age="31"&city="Amsterdam"&language=""javascript","typescript""';
 
         expect(input).toEqual(output);
     });
@@ -44,7 +44,7 @@ describe('Using set() for url manipulation', () => {
         });
 
         const input = decodeURI(global.window.location.href);
-        const output = 'http://localhost/?name="Peter"&age="31"&city="Amsterdam"&language="javascript,typescript"';
+        const output = 'http://localhost/?name="Peter"&age="31"&city="Amsterdam"&language=""javascript","typescript""';
 
         expect(input).toEqual(output);
     });

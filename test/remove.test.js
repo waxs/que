@@ -73,7 +73,7 @@ describe('Using remove() for url manipulation', () => {
         });
 
         const input = decodeURI(global.window.location.href);
-        const output = 'http://localhost/?age="31"&name="Sander"&hobbies="music"';
+        const output = 'http://localhost/?age="31"&name="Sander"&hobbies=""music""';
 
         expect(input).toEqual(output);
     });
