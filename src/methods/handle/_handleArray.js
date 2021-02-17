@@ -3,7 +3,7 @@
  ---------------------------------------- */
 
 function _handleArray(array) {
-    return array.split(',');
+    return array.match(/"(.*?)"/g);
 }
 
 /** ----------------------------------------
