@@ -1,6 +1,6 @@
 {
   "name": "@waxs/que",
-  "version": "1.0.11",
+  "version": "1.0.12",
   "description": "Que JS is a simple query string parser that dissects your URI and can set new data.",
   "main": "dist/que.pkg.js",
   "scripts": {
