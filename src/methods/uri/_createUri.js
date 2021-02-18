@@ -21,7 +21,7 @@ function _createUri(data = this.data) {
         const values = data[key];
         const type = isType(values);
         if(type !== 'array') return `${key}="${convertDates(values)}"`;
-        return `${key}="${values.map(value => `"${convertDates(value)}"`).join(',')}"`;
+        return `${key}="${values.map(value => `${convertDates(value)}`).join(',')}"`;
     }); 
 
     return query.join('&');
