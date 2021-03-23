@@ -1,5 +1,5 @@
 /*!
- * @waxs/que (1.0.13) by Sander Hidding
+ * @waxs/que (1.2.0) by Sander Hidding
  * Que JS is a simple query string parser that dissects your URI and can set new data.
  * This source code is licensed under the MIT license found in the GitHub repository (git+https://github.com/waxs/que.git)
  */
@@ -208,7 +208,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/** -------------------------
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/** ----------------------------------------\n    Handle Escape\n ---------------------------------------- */\nfunction _handleEscape(value) {\n  return decodeURI(value.replace(/[-[\\]{}()*+?.\\\\^$|#\\s]/g, '\\\\$'));\n}\n/** ----------------------------------------\n    Exports\n ---------------------------------------- */\n\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (_handleEscape);\n\n//# sourceURL=webpack://Que/./src/methods/handle/_handleEscape.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/** ----------------------------------------\n    Handle Escape\n ---------------------------------------- */\nfunction _handleEscape(value) {\n  return decodeURI(value.replace(/[[\\]{}()*+?.\\\\^$|#\\s]/g, '\\\\$'));\n}\n/** ----------------------------------------\n    Exports\n ---------------------------------------- */\n\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (_handleEscape);\n\n//# sourceURL=webpack://Que/./src/methods/handle/_handleEscape.js?");
 
 /***/ }),
 
